@@ -29,14 +29,14 @@
  */
 
 import React from 'react';
+import Avatar from './Avatar';
 
 // Profile 컴포넌트는 props나 state 없이 정적으로 UI 요소를 보여주고 있다.
 // 외부상태와 연결되어 있지 않은 고립된, 독립된, 재사용성이 뛰어난 컴포넌트 완성.
 export default function Profile({ image, name, title, isNew }) {
   return (
     <div className="profile">
-      <img className="photo" src={image} alt="avatar" />
-      {isNew && <span className="new">New</span>}
+      <Avatar image={image} isNew={isNew} />
       <h1>{name}</h1>
       <p>{title}</p>
     </div>
