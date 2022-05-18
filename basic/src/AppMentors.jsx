@@ -3,20 +3,47 @@ import React, { useState } from "react";
 export default function AppMentors() {
   // 원칙적으로 리액트 상태값은 불변성을 유지해야한다.
   // 만약 변경해야한다면 새로운 객체, 새로운 값, 새로운 배열로 만들어줘야 한다.
-  const [person, setPerson] = useState({
-    name: "은청",
-    title: "개발자",
-    mentors: [
-      {
-        name: "밥",
-        title: "시니어개발자",
-      },
-      {
-        name: "제임스",
-        title: "시니어개발자",
-      },
-    ],
-  });
+  const [person, setPerson] = useState(initialPerson);
+  const handelUpdate = () => {
+    const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
+    const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
+    /*
+      아래 코드로 실행시 UI에서 값이 변화하지 X
+      - 리액트는 객체 참조값(=레퍼런스값)이 변화하지 않으면 변화 감지x (불변성)
+      - 아래 코드는 참조값이 동일하기 때문에 업데이트 되지 않는다.
+      - 업데이트를 새로운 객체, 새로운 값, 새로운 배열로 만들어줘야 한다.
+
+      person.mentors[0].name = current;
+      setPerson(person); 
+    */
+
+    setPerson((person) => ({
+      // 새로운 객체 생성
+      ...person,
+      mentors: person.mentors.map((mentor) => {
+        // map을 이용하여 새로운 배열 생성
+        if (mentor.name === prev) {
+          return { ...mentor, name: current };
+        }
+        return mentor;
+      }),
+    }));
+  };
+  const handleAdd = () => {
+    const name = prompt(`멘토의 이름은?`);
+    const title = prompt(`멘토의 직함은?`);
+    setPerson((person) => ({
+      ...person,
+      mentors: [...person.mentors, { name, title }], // 앞에 추가 하고 싶으면  [{ name, title }, ...person.mentors]
+    }));
+  };
+  const handleDel = () => {
+    const name = prompt(`누구를 삭제하고 싶은가요?`);
+    setPerson((person) => ({
+      ...person,
+      mentors: person.mentors.filter((mentor) => mentor.name !== name),
+    }));
+  };
 
   return (
     <div>
@@ -32,58 +59,24 @@ export default function AppMentors() {
           </li>
         ))}
       </ul>
-      <button
-        onClick={() => {
-          const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
-          const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
-          /*
-            아래 코드로 실행시 UI에서 값이 변화하지 X
-            - 리액트는 객체 참조값(=레퍼런스값)이 변화하지 않으면 변화 감지x (불변성)
-            - 아래 코드는 참조값이 동일하기 때문에 업데이트 되지 않는다.
-            - 업데이트를 새로운 객체, 새로운 값, 새로운 배열로 만들어줘야 한다.
-
-            person.mentors[0].name = current;
-            setPerson(person); 
-          */
-
-          setPerson((person) => ({
-            // 새로운 객체 생성
-            ...person,
-            mentors: person.mentors.map((mentor) => {
-              // map을 이용하여 새로운 배열 생성
-              if (mentor.name === prev) {
-                return { ...mentor, name: current };
-              }
-              return mentor;
-            }),
-          }));
-        }}
-      >
-        멘토 이름 바꾸기
-      </button>
-      <button
-        onClick={() => {
-          const name = prompt(`멘토의 이름은?`);
-          const title = prompt(`멘토의 직함은?`);
-          setPerson((person) => ({
-            ...person,
-            mentors: [...person.mentors, { name, title }], // 앞에 추가 하고 싶으면  [{ name, title }, ...person.mentors]
-          }));
-        }}
-      >
-        멘토 추가하기
-      </button>
-      <button
-        onClick={() => {
-          const name = prompt(`누구를 삭제하고 싶은가요?`);
-          setPerson((person) => ({
-            ...person,
-            mentors: person.mentors.filter((mentor) => mentor.name !== name),
-          }));
-        }}
-      >
-        멘토 삭제하기
-      </button>
+      <button onClick={handelUpdate}>멘토 이름 바꾸기</button>
+      <button onClick={handleAdd}>멘토 추가하기</button>
+      <button onClick={handleDel}>멘토 삭제하기</button>
     </div>
   );
 }
+
+const initialPerson = {
+  name: "은청",
+  title: "개발자",
+  mentors: [
+    {
+      name: "밥",
+      title: "시니어개발자",
+    },
+    {
+      name: "제임스",
+      title: "시니어개발자",
+    },
+  ],
+};
