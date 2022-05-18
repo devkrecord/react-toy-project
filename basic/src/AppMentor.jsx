@@ -29,7 +29,10 @@ export default function AppMentor() {
       <button
         onClick={() => {
           const title = prompt(`what's your mentor's title?`);
-          setPerson({ ...person, mentor: { ...person.mentor, title } });
+          setPerson((person) => ({
+            ...person,
+            mentor: { ...person.mentor, title },
+          }));
         }}
       >
         멘토 타이틀 바꾸기
