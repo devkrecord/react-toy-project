@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import AppMentorsImmer from "./AppMentorsImmer";
+import AppForm from "./AppForm";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppMentorsImmer />
+    <AppForm />
   </React.StrictMode>
 );
 
