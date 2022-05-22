@@ -4647,7 +4647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"confusing-browser-globals@npm:^1.0.10, confusing-browser-globals@npm:^1.0.11":
+"confusing-browser-globals@npm:^1.0.11":
   version: 1.0.11
   resolution: "confusing-browser-globals@npm:1.0.11"
   checksum: 3afc635abd37e566477f610e7978b15753f0e84025c25d49236f1f14d480117185516bdd40d2a2167e6bed8048641a9854964b9c067e3dcdfa6b5d0ad3c3a5ef
@@ -4948,10 +4948,12 @@ __metadata:
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
-    eslint-config-react-app: 6
+    eslint-config-react-app: ^7.0.1
+    immer: ^10.0.2
     react: ^18.2.0
     react-dom: ^18.2.0
     react-scripts: 5.0.1
+    use-immer: ^0.9.0
     web-vitals: ^2.1.0
   languageName: unknown
   linkType: soft
@@ -5748,32 +5750,6 @@ __metadata:
     escodegen: bin/escodegen.js
     esgenerate: bin/esgenerate.js
   checksum: 5aa6b2966fafe0545e4e77936300cc94ad57cfe4dc4ebff9950492eaba83eef634503f12d7e3cbd644ecc1bab388ad0e92b06fd32222c9281a75d1cf02ec6cef
-  languageName: node
-  linkType: hard
-
-"eslint-config-react-app@npm:6":
-  version: 6.0.0
-  resolution: "eslint-config-react-app@npm:6.0.0"
-  dependencies:
-    confusing-browser-globals: ^1.0.10
-  peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^4.0.0
-    "@typescript-eslint/parser": ^4.0.0
-    babel-eslint: ^10.0.0
-    eslint: ^7.5.0
-    eslint-plugin-flowtype: ^5.2.0
-    eslint-plugin-import: ^2.22.0
-    eslint-plugin-jest: ^24.0.0
-    eslint-plugin-jsx-a11y: ^6.3.1
-    eslint-plugin-react: ^7.20.3
-    eslint-plugin-react-hooks: ^4.0.8
-    eslint-plugin-testing-library: ^3.9.0
-  peerDependenciesMeta:
-    eslint-plugin-jest:
-      optional: true
-    eslint-plugin-testing-library:
-      optional: true
-  checksum: b265852455b1c10e9c5f0cebe199306fffc7f8e1b6548fcb0bccdc4415c288dfee8ab10717122a32275b91130dfb482dcbbc87d2fb79d8728d4c2bfa889f0915
   languageName: node
   linkType: hard
 
@@ -7191,6 +7167,13 @@ __metadata:
   version: 5.2.4
   resolution: "ignore@npm:5.2.4"
   checksum: 3d4c309c6006e2621659311783eaea7ebcd41fe4ca1d78c91c473157ad6666a57a2df790fe0d07a12300d9aac2888204d7be8d59f9aaf665b1c7fcdb432517ef
+  languageName: node
+  linkType: hard
+
+"immer@npm:^10.0.2":
+  version: 10.0.2
+  resolution: "immer@npm:10.0.2"
+  checksum: 525a3b14210d02ae420c3b9f6ca14f7e9bcf625611d1356e773e7739f14c7c8de50dac442e6c7de3a6e24a782f7b792b6b8666bc0b3f00269d21a95f8f68ca84
   languageName: node
   linkType: hard
 
@@ -12659,6 +12642,16 @@ __metadata:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
   checksum: fbdba6b1d83336aca2216bbdc38ba658d9cfb8fc7f665eb8b17852de638ff7d1a162c198a8e4ed66001ddbf6c9888d41e4798912c62b4fd777a31657989f7bdf
+  languageName: node
+  linkType: hard
+
+"use-immer@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "use-immer@npm:0.9.0"
+  peerDependencies:
+    immer: ">=2.0.0"
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 3f02e31d38f354125e6cffaaed0a08d9bf122b9df261aa7b38a25246813b3bd8b22bf97b192099d4e84adcfbbb07e69e14ba29520e0ac8d93f3991ef3a3652b4
   languageName: node
   linkType: hard
 
