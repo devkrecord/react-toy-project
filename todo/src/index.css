@@ -9,6 +9,7 @@
   --color-text: #22243b;
   --color-accent: #f16e03;
   --color-white: #ffffff;
+  --color-scrollbar: #aaa7a7;
 }
 
 body {
@@ -40,6 +41,8 @@ body {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  /* 브라우저 기본 accent 컬러로 설정 - ex) checkbox 클릭시 */
+  accent-color: var(--color-accent);
   box-shadow: 12px 11px 25px -4px rgba(0, 0, 0, 0.76);
   -webkit-box-shadow: 12px 11px 25px -4px rgba(0, 0, 0, 0.76);
   -moz-box-shadow: 12px 11px 25px -4px rgba(0, 0, 0, 0.76);
@@ -62,4 +65,20 @@ ul {
 button {
   outline: none;
   border: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent);
 }
