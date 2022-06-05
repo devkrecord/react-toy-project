@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+/*
+    $ yarn add react-router-dom 설치
+    createBrowserRouter는 react router v6.4부터 사용할 수 있다.
+*/
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <p>Home</p>,
+    errorElement: <p>Not Found😅</p>,
+  },
+  {
+    path: '/videos',
+    element: <p>Videos</p>,
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
