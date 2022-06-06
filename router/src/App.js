@@ -1,5 +1,9 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Videos from './pages/Videos';
+import Root from './pages/Root';
 
 /*
     $ yarn add react-router-dom 설치
@@ -9,12 +13,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <p>Home</p>,
-    errorElement: <p>Not Found😅</p>,
-  },
-  {
-    path: '/videos',
-    element: <p>Videos</p>,
+    element: <Root />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/videos',
+        element: <Videos />,
+      },
+    ],
   },
 ]);
 
