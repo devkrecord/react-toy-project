@@ -1,7 +1,7 @@
+import React from 'react';
 import './App.css';
+import MainProducts from './components/MainProducts';
 
-function App() {
-  return <div></div>;
+export default function App() {
+  return <MainProducts />;
 }
-
-export default App;
