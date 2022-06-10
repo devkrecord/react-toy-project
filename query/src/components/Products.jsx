@@ -25,13 +25,14 @@ export default function Products() {
     isLoading,
     error,
     data: products,
-  } = useQuery(['products'], async () => {
+  } = useQuery(['products', checked], async () => {
     //동일한 결과값이 캐싱되어 있어 한번만 호출됨
     console.log('fetching...');
-    return fetch(`data/products.json`).then((res) => res.json());
+    return fetch(`data/${checked ? 'sale_' : ''}products.json`).then((res) =>
+      res.json()
+    );
   });
-  //const [loading, error, products] = useProducts({ salesOnly: checked });
-  const handleChange = () => setChecked((prev) => !prev);
+  const handleChange = () => setChecked((checked) => !checked);
 
   if (isLoading) return <p>Loading...</p>;
 
