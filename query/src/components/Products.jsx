@@ -5,7 +5,7 @@ export default function Products() {
   const [checked, setChecked] = useState(false);
   /*
     'useQuery'는 React Query를 이용해 서버로부터 데이터를 조회해올 때 사용 
-    [ const res = useQuery(queryKey, queryFn); ]
+    [ const res = useQuery(queryKey, queryFn, option); ]
 
     'queryKey'의 역할은 React Query가 query 캐싱을 관리할 수 있도록 도와준다.
     res1과 res2가 동일한 queryKey를 사용하며 서버에 있는 데이터를 조회하려 할 때
@@ -25,13 +25,22 @@ export default function Products() {
     isLoading,
     error,
     data: products,
-  } = useQuery(['products', checked], async () => {
-    //동일한 결과값이 캐싱되어 있어 한번만 호출됨
-    console.log('fetching...');
-    return fetch(`data/${checked ? 'sale_' : ''}products.json`).then((res) =>
-      res.json()
-    );
-  });
+  } = useQuery(
+    ['products', checked],
+    async () => {
+      //동일한 결과값이 캐싱되어 있어 한번만 호출됨
+      console.log('fetching...');
+      return fetch(`data/${checked ? 'sale_' : ''}products.json`).then((res) =>
+        res.json()
+      );
+    },
+    {
+      /* 데이터가 fresh -> stale 상태로 변경되는데 걸리는 시간
+      fresh 상태일때는 쿼리 인스턴스가 새롭게 mount 되어도 네트워크 fetch가 일어나지 않는다.
+      데이터가 한번 fetch 되고 나서 staleTime이 지나지 않았다면 unmount 후 mount 되어도 fetch가 일어나지 않는다.*/
+      staleTime: 1000 * 60 * 5,
+    }
+  );
   const handleChange = () => setChecked((checked) => !checked);
 
   if (isLoading) return <p>Loading...</p>;
