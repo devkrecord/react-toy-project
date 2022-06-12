@@ -29,7 +29,7 @@ export default function Products() {
     ['products', checked],
     async () => {
       //동일한 결과값이 캐싱되어 있어 한번만 호출됨
-      console.log('fetching...');
+      console.log('fetching...', checked);
       return fetch(`data/${checked ? 'sale_' : ''}products.json`).then((res) =>
         res.json()
       );
